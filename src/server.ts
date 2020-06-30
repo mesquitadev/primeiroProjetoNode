@@ -1,15 +1,16 @@
 import express from 'express';
-const port  = 3000;
+// src/routes/index.ts
+// src/server.ts
+import route from './routes';
+
+const port = 3000;
 
 const app = express();
 
-app.get('/', (req, res) => {
-  return res.json({
-    message: 'Hello, world!'
-  })
-})
+app.use(express.json());
+app.use(route);
 
 app.listen(port, () => {
-  console.log(`Server started on port ${port}...`)
-})
-
+  // eslint-disable-next-line no-console
+  console.log(`Server started on port ${port}...`);
+});
